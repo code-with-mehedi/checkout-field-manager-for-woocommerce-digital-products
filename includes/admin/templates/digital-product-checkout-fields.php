@@ -27,7 +27,22 @@
 		?>
 
 		 </ul>
+		<h3>Disable shipping for downloadable products</h3>
+		<p>Check the checkbox to disable shipping</p>
+		 <ul>
+
+			 <li>
+				 <input type="checkbox" 
+					name="disable_shipping"
+					id="disable_shipping"
+					<?php checked( true, isset( $wccfm_simple_checkout_fields['disable_shipping'] ) ); ?>
+				 >
+				 <label for="disable_shipping"> Disable shipping </lable>
+			 </li>
+
+		 </ul>
 		<h3>Order notes</h3>
+		<p>Check the checkbox to disable order notes</p>
 		 <ul>
 
 			 <li>

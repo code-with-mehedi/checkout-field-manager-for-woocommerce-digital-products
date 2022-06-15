@@ -36,56 +36,49 @@ class Admin_settings {
 		$tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $default_tab;
 
 		?>
-		<!-- Our admin page content should all be inside .wrap -->
-		<div class="wrap">
-			<!-- Print the page title -->
-			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-			<!-- Here are our tabs -->
-			<nav class="nav-tab-wrapper">
-				<a href="?page=wccfm_settings_tab" class="nav-tab 
+			<!-- Our admin page content should all be inside .wrap -->
+			<div class="wrap">
+				<!-- Print the page title -->
+				<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
+				<!-- Here are our tabs -->
+				<nav class="nav-tab-wrapper">
+					<a href="?page=wccfm_settings_tab" 
+						class="nav-tab 
 						<?php
-						if ( $tab === null ) :
-							?>
-							nav-tab-active<?php endif; ?>">Fields Manager</a>
-				<a href="?page=wccfm_settings_tab&tab=settings" class="nav-tab 
-							<?php
-							if ( $tab === 'settings' ) :
-								?>
-								nav-tab-active<?php endif; ?>">Settings</a>
-				<a href="?page=wccfm_settings_tab&tab=support" class="nav-tab 
-							<?php
+							if ( $tab === null ) :
+						?>
+						nav-tab-active<?php endif; ?>">Fields Manager</a>
+					<a href="?page=wccfm_settings_tab&tab=support" 
+						class="nav-tab 
+						<?php
 							if ( $tab === 'support' ) :
-								?>
-								nav-tab-active<?php endif; ?>">Support</a>
-			</nav>
-
-			<div class="tab-content">
-				<?php
-				switch ( $tab ) :
-					case 'settings':
 						?>
-								<div class="wccfm-wrap">
-									<h3>Settings</h3>
-								</div>
-							<?php
-						break;
-					case 'support':
-						?>
-								<div class="wccfm-wrap">
-									<h3>Support</h3>
-									<p> For support please contact <a href="mailto:mahedicsit@gmail.com">mahedicsit@gmail.com</a></p>
-								</div>
-							<?php
-						break;
-					default:
-						// include simple checkout form field template
-						include_once __DIR__ . '/templates/digital-product-checkout-fields.php';
+						nav-tab-active<?php endif; ?>">Support</a>
+				</nav>
 
-						break;
-					endswitch;
+				<div class="tab-content">
+					<?php
+						switch ( $tab ) :
+							case 'support':
+						?>
+
+					<div class="wccfm-wrap">
+						<h3>Support</h3>
+						<p> For support please contact <a href="mailto:mahedicsit@gmail.com">mahedicsit@gmail.com</a></p>
+					</div>
+
+        			<?php
+							break;
+						default:
+
+							// include simple checkout form field template
+							include_once __DIR__ . '/templates/digital-product-checkout-fields.php';
+
+							break;
+						endswitch;
 				?>
-			</div>
-		</div>
-		<?php
+    </div>
+</div>
+<?php
 	}
 }

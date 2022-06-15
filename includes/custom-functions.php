@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Get saved options from database for checkout field control
+ *
  * @return array
  */
 function wccfm_get_simple_product_options() {
@@ -26,34 +27,62 @@ function wccfm_get_simple_product_options() {
  * Contorl checkout field visibility for digital products
  */
 
-add_filter( 'woocommerce_checkout_fields' , 'wccfm_virtual_checkout_field_manager' );
- 
+add_filter( 'woocommerce_checkout_fields', 'wccfm_virtual_checkout_field_manager' );
+
 function wccfm_virtual_checkout_field_manager( $fields ) {
 
-	if(!is_checkout())
-	return $fields;
+	if ( ! is_checkout() ) {
+		return $fields;
+	}
 
 	$options = wccfm_get_simple_product_options();
 	if ( ! $options ) {
 		$options = array();
 	}
 
-	$only_virtual = true;
-    
-   foreach( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-      //Check if there are non-virtual products
-      if ( ! $cart_item['data']->is_virtual() ) $only_virtual = false;   
-  	}
+	$only_virtual      = true;
+	$only_downloadable = true;
+
+	foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+
+		// Check if there are non-virtual products
+		if ( ( ! $cart_item['data']->is_virtual() ) ) {
+			$only_virtual = false;
+
+		}
+		// Check if there are downloadable products
+		if ( ! $cart_item['data']->is_downloadable() ) {
+			$only_downloadable = false;
+		}
+	}
 
 	foreach ( $options as $key => $value ) {
+
 		// Unset fields which are not needed for digital products
 		if ( $value === 'on' && $only_virtual ) {
-			unset($fields['billing'][ $key ]);
+			unset( $fields['billing'][ $key ] );
 		}
-		if($key==="disable_order_notes" && $value === 'on' && $only_virtual){
+
+		// Hide order notes
+		if ( $key === 'disable_order_notes' && $value === 'on' && $only_virtual ) {
 			add_filter( 'woocommerce_enable_order_notes_field', '__return_false' );
 		}
 
+		// Hide billing fields for downloadable products
+		if ( $value === 'on' && $only_downloadable ) {
+			unset( $fields['billing'][ $key ] );
+		}
+
+		// Hide shipping fields for downloadable products
+		if ( $key === 'disable_shipping' && $value === 'on' && $only_downloadable ) {
+			// hide ship to different address title
+			add_filter( 'woocommerce_cart_needs_shipping_address', '__return_false' );
+		}
+
+		// Hide order notes for downloadable products
+		if ( $key === 'disable_order_notes' && $value === 'on' && $only_downloadable ) {
+			add_filter( 'woocommerce_enable_order_notes_field', '__return_false' );
+		}
 	}
 	return $fields;
 }

@@ -22,7 +22,7 @@ body {
   color: #223c48;
   font-size: 1.2em;
   margin: 0 auto;
-  padding:2em;
+  padding:1em;
 }
 @media screen and (max-width: 460px) {
   .wccfm-wrap {
@@ -36,7 +36,7 @@ body {
 }
 
 .wccfm-wrap li {
-  margin-bottom: 1.5em;
+  margin-bottom: 15px;
   padding-left: 2.5em;
   position: relative;
 }

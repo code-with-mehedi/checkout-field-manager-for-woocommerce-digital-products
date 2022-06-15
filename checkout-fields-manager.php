@@ -43,6 +43,17 @@ if ( !in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', ge
 }
 
 /**
+ * Add setting links for plugin
+ */
+function wccfm_settings_link( $links ) {
+	$settings_link = '<a href="admin.php?page=wccfm_settings_tab">Settings</a>';
+	array_unshift( $links, $settings_link );
+	return $links;
+}
+$plugin = plugin_basename( __FILE__ );
+add_filter( "plugin_action_links_$plugin", 'wccfm_settings_link' );
+
+/**
  * Initialize the plugin functionality.
  *
  * @since  1.0.0
