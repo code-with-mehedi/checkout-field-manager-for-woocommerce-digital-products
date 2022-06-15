@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: Product type based checkout field manager
- * Description: Manage checkout fields for WooCommerce based on product type.
+ * Plugin Name: Checkout field manager for woocommerce digital / virtual products
+ * Description: Manage checkout fields for WooCommerce digital / virtual products.
  * Version:     1.0.0
  * Author:      Mehedi Hasan
  * Author URI:  https://codewithmehedi.com

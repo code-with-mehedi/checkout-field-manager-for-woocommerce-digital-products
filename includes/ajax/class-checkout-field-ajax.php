@@ -33,15 +33,15 @@ class Checkout_field_ajax {
 	 * Run a sample action.
 	 */
 	public function checkout_field_manager() {
-		//verify nonce
+		// verify nonce
 		check_ajax_referer( 'simple-product-shipping-nonce', 'nonce' );
- 
-		//handle ajax call
-		if(isset($_POST['formValues'])){
+
+		// handle ajax call
+		if ( isset( $_POST['formValues'] ) ) {
 			// print_r($_POST['formValues']);
-			//serialize and update to options
+			// serialize and update to options
 			$formValues = $_POST['formValues'];
-			update_option('wccfm_simple_product_checkout_fields', $formValues);
+			update_option( 'wccfm_simple_product_checkout_fields', $formValues );
 		}
 
 		wp_send_json_success();
