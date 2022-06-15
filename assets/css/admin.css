@@ -21,8 +21,8 @@ body {
   background: #f0f5f8;
   color: #223c48;
   font-size: 1.2em;
-  margin: 2em auto;
-  padding: 2em;
+  margin: 0 auto;
+  padding:2em;
 }
 @media screen and (max-width: 460px) {
   .wccfm-wrap {
@@ -45,11 +45,11 @@ input[type=checkbox],
 input[type=radio],
 li label::before {
   cursor: pointer;
-  height: 40px;
+  height: 30px;
   left: 0;
-  margin-top: -20px;
+  margin-top: -16px;
   position: absolute;
-  width: 40px;
+  width: 30px;
   top: 50%;
 }
 
