@@ -2,13 +2,13 @@
 /**
  * Bootstrap class.
  *
- * @package WPBP
+ * @package VirtualCheckoutManager
  */
 
-namespace WPBP;
+namespace VirtualCheckoutManager;
 
-use WPBP\Ajax\Checkout_field_ajax;
-use WPBP\Traits\Singleton;
+use VirtualCheckoutManager\Ajax\Checkout_Field_Ajax;
+use VirtualCheckoutManager\Traits\Singleton;
 
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -61,7 +61,7 @@ class Bootstrap {
 	private function load_ajax_classes() {
 		require_once __DIR__ . '/ajax/class-checkout-field-ajax.php';
 
-		Checkout_field_ajax::instance();
+		Checkout_Field_Ajax::instance();
 	}
 
 	/**

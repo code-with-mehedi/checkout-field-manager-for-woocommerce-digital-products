@@ -2,10 +2,10 @@
 /**
  * Singleton trait.
  *
- * @package WPBP
+ * @package VirtualCheckoutManager
  */
 
-namespace WPBP\Traits;
+namespace VirtualCheckoutManager\Traits;
 
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {

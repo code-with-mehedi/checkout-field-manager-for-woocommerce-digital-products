@@ -2,7 +2,7 @@
 /**
  * Class admin settings.
  */
-namespace WPBP;
+namespace VirtualCheckoutManager;
 
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -10,12 +10,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-use WPBP\Traits\Singleton;
+use VirtualCheckoutManager\Traits\Singleton;
 
 class Admin_settings {
 
 	use Singleton;
 
+	/**
+	 * Constructor of Admin_settings class.
+	 */
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'wccfm_admin_menu' ) );
 
@@ -33,7 +36,7 @@ class Admin_settings {
 		// Get the active tab from the $_GET param
 		$default_tab = null;
 
-		$tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $default_tab;
+		$tab = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : $default_tab;
 
 		?>
 			<!-- Our admin page content should all be inside .wrap -->
@@ -45,40 +48,39 @@ class Admin_settings {
 					<a href="?page=wccfm_settings_tab" 
 						class="nav-tab 
 						<?php
-							if ( $tab === null ) :
-						?>
-						nav-tab-active<?php endif; ?>">Fields Manager</a>
+						if ( $tab === null ) :
+							?>
+						nav-tab-active<?php endif; ?>"> <?php _e( 'Fields Manager', 'wccfm' ); ?></a>
 					<a href="?page=wccfm_settings_tab&tab=support" 
 						class="nav-tab 
 						<?php
-							if ( $tab === 'support' ) :
-						?>
-						nav-tab-active<?php endif; ?>">Support</a>
+						if ( $tab === 'support' ) :
+							?>
+						nav-tab-active<?php endif; ?>"><?php _e( 'Support', 'wccfm' ); ?></a>
 				</nav>
 
 				<div class="tab-content">
 					<?php
-						switch ( $tab ) :
-							case 'support':
-						?>
+					switch ( $tab ) :
+						case 'support':
+							?>
 
 					<div class="wccfm-wrap">
-						<h3>Support</h3>
-						<p> For support please contact <a href="mailto:mahedicsit@gmail.com">mahedicsit@gmail.com</a></p>
+						<h3><?php _e( 'Support', 'wccfm' ); ?></h3>
+						<p> <?php _e( 'For support please contact', 'wccfm' ); ?> <a href="mailto:mahedicsit@gmail.com">mahedicsit@gmail.com</a></p>
 					</div>
 
-        			<?php
+							<?php
 							break;
 						default:
-
 							// include simple checkout form field template
 							include_once __DIR__ . '/templates/digital-product-checkout-fields.php';
 
 							break;
 						endswitch;
-				?>
-    </div>
+					?>
+	</div>
 </div>
-<?php
+		<?php
 	}
 }

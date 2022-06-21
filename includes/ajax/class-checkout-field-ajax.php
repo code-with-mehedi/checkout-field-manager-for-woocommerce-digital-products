@@ -2,12 +2,12 @@
 /**
  * Sample_Ajax class.
  *
- * @package WPBP
+ * @package VirtualCheckoutManager
  */
 
-namespace WPBP\Ajax;
+namespace VirtualCheckoutManager\Ajax;
 
-use WPBP\Traits\Singleton;
+use VirtualCheckoutManager\Traits\Singleton;
 
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Load sample ajax functionality inside this class.
  */
-class Checkout_field_ajax {
+class Checkout_Field_Ajax {
 
 	use Singleton;
 
@@ -38,12 +38,16 @@ class Checkout_field_ajax {
 
 		// handle ajax call
 		if ( isset( $_POST['formValues'] ) ) {
-			// print_r($_POST['formValues']);
-			// serialize and update to options
-			$formValues = $_POST['formValues'];
-			update_option( 'wccfm_simple_product_checkout_fields', $formValues );
-		}
 
-		wp_send_json_success();
+			// serialize and update to options
+			$form_values = $_POST['formValues'];
+			// sanitize form data
+			$form_values = array_map( 'sanitize_text_field', $form_values );
+			update_option( 'wccfm_simple_product_checkout_fields', $form_values );
+			wp_send_json_success();
+		}
+		// send error if action is failed.
+		wp_send_json_error();
+
 	}
 }

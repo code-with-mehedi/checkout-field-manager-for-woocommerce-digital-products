@@ -25,7 +25,7 @@ if ( ! defined( 'WCCFM_PLUGIN_FILE' ) ) {
 /**
  * Include necessary files to initial load of the plugin.
  */
-if ( ! class_exists( 'WPBP\Bootstrap' ) ) {
+if ( ! class_exists( 'VirtualCheckoutManager\Bootstrap' ) ) {
 	require_once __DIR__ . '/includes/traits/trait-singleton.php';
 	require_once __DIR__ . '/includes/class-bootstrap.php';
 }
@@ -57,10 +57,10 @@ add_filter( "plugin_action_links_$plugin", 'wccfm_settings_link' );
  * Initialize the plugin functionality.
  *
  * @since  1.0.0
- * @return WPBP\Bootstrap
+ * @return VirtualCheckoutManager\Bootstrap
  */
 function wccfm_init() {
-	return WPBP\Bootstrap::instance();
+	return VirtualCheckoutManager\Bootstrap::instance();
 }
 
 // Call initialization function.
