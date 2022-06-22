@@ -49,12 +49,13 @@ class Enqueue {
 			// enqueue custom js for admin.
 			wp_enqueue_script( 'wccfm-admin-js', plugin_dir_url( __DIR__ ) . 'assets/src/admin.js', array( 'jquery' ), '1.0.0', true );
 
-			wp_enqueue_script( 'sweetalert', 'https://cdn.jsdelivr.net/npm/sweetalert2@11', array(), '1.0.0', true );
+			wp_enqueue_script( 'sweetalert-js', plugin_dir_url( __DIR__ ) .'assets/src/sweetalert2.min.js', array('jquery'), '1.0.0', true );
 
 			wp_localize_script( 'wccfm-admin-js', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 
 			// enqueue custom css for admin.
 			wp_enqueue_style( 'wccfm-admin-css', plugin_dir_url( __DIR__ ) . 'assets/css/admin.css', array(), '1.0.0' );
+			wp_enqueue_style( 'sweetalert-css', plugin_dir_url( __DIR__ ) . 'assets/css/sweetalert2.min.css', array(), '1.0.0' );
 
 		}
 
@@ -64,8 +65,7 @@ class Enqueue {
 	 * Add CSS files.
 	 */
 	public function enqueue_styles() {
-		// enqueue jquery ui css.
-		wp_enqueue_style( 'jquery-ui-css', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css', array(), '1.0.0' );
+		// enqueue CSS files for frontend.
 
 	}
 }

@@ -36,7 +36,7 @@ if ( ! class_exists( 'VirtualCheckoutManager\Bootstrap' ) ) {
 if ( !in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option( 'active_plugins' ) ) ) ) {
 
 	add_action('admin_notices', function() {
-        echo '<div class="notice notice-error"><p>'.esc_html__('product based checkout field manager requires WooCommerce to be installed and active. You can download', 'scfwc').' <a href="https://woocommerce.com/" target="_blank">WooCommerce</a> '.esc_html__('here.','wccfm').'</p></div>';   
+        echo '<div class="notice notice-error"><p>'.esc_html__('Virtual product checkout field manager requires WooCommerce to be installed and active. You can download', 'scfwc').' <a href="https://woocommerce.com/" target="_blank">WooCommerce</a> '.esc_html__('here.','wccfm').'</p></div>';   
     });
 	return;
 
@@ -45,13 +45,15 @@ if ( !in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', ge
 /**
  * Add setting links for plugin
  */
-function wccfm_settings_link( $links ) {
-	$settings_link = '<a href="admin.php?page=wccfm_settings_tab">Settings</a>';
-	array_unshift( $links, $settings_link );
-	return $links;
+if (! function_exists('wccfm_settings_link')) {
+	function wccfm_settings_link( $links ) {
+		$settings_link = '<a href="admin.php?page=wccfm_settings_tab">Settings</a>';
+		array_unshift( $links, $settings_link );
+		return $links;
+	}
 }
-$plugin = plugin_basename( __FILE__ );
-add_filter( "plugin_action_links_$plugin", 'wccfm_settings_link' );
+
+add_filter( "plugin_action_links_".WCCFM_PLUGIN_FILE, 'wccfm_settings_link' );
 
 /**
  * Initialize the plugin functionality.
@@ -59,8 +61,10 @@ add_filter( "plugin_action_links_$plugin", 'wccfm_settings_link' );
  * @since  1.0.0
  * @return VirtualCheckoutManager\Bootstrap
  */
-function wccfm_init() {
-	return VirtualCheckoutManager\Bootstrap::instance();
+if ( ! function_exists( 'wccfm_init' ) ) {
+	function wccfm_init() {
+		return VirtualCheckoutManager\Bootstrap::instance();
+	}
 }
 
 // Call initialization function.

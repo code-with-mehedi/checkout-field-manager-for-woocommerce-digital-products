@@ -26,13 +26,13 @@ class Admin_settings {
 	/**
 	 * Add submenu page under WooCommerce.
 	 */
-	function wccfm_admin_menu() {
+	public function wccfm_admin_menu() {
 		add_submenu_page( 'woocommerce', 'Checkout field manager for digital / virtual products', 'Checkout Field Manager', 'manage_options', 'wccfm_settings_tab', array( $this, 'wccfm_admin_page' ) );
 	}
 	/**
 	 * Admin page callback
 	 */
-	function wccfm_admin_page() {
+	public function wccfm_admin_page() {
 		// Get the active tab from the $_GET param
 		$default_tab = null;
 

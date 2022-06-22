@@ -38,11 +38,9 @@ class Checkout_Field_Ajax {
 
 		// handle ajax call
 		if ( isset( $_POST['formValues'] ) ) {
-
-			// serialize and update to options
-			$form_values = $_POST['formValues'];
+			
 			// sanitize form data
-			$form_values = array_map( 'sanitize_text_field', $form_values );
+			$form_values = array_map( 'sanitize_text_field', $_POST['formValues'] );
 			update_option( 'wccfm_simple_product_checkout_fields', $form_values );
 			wp_send_json_success();
 		}

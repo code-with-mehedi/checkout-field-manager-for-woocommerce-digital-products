@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return array
  */
 if ( ! function_exists( 'wccfm_get_simple_product_options' ) ) {
+	
 	function wccfm_get_simple_product_options() {
 		$options = get_option( 'wccfm_simple_product_checkout_fields' );
 		if ( ! $options ) {

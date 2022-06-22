@@ -14,7 +14,7 @@
 
 					?>
 				<li>
-					<input type="checkbox" name="<?php echo esc_attr( $key ); ?>" id="<?php echo $key; ?>"
+					<input type="checkbox" name="<?php echo esc_attr( $key ); ?>" id="<?php echo esc_attr( $key ); ?>"
 						<?php checked( true, isset( $wccfm_simple_checkout_fields[ $key ] ) ); ?>>
 					<label for="<?php echo esc_attr( $key ); ?>"><?php esc_html_e( $value['label'], 'wccfm' ); ?></lable>
 				</li>
