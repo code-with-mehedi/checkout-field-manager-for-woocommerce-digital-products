@@ -51,9 +51,10 @@ if (! function_exists('wccfm_settings_link')) {
 		array_unshift( $links, $settings_link );
 		return $links;
 	}
+	$plugin = plugin_basename( __FILE__ );
 }
 
-add_filter( "plugin_action_links_".WCCFM_PLUGIN_FILE, 'wccfm_settings_link' );
+add_filter( "plugin_action_links_$plugin", 'wccfm_settings_link' );
 
 /**
  * Initialize the plugin functionality.
@@ -61,7 +62,7 @@ add_filter( "plugin_action_links_".WCCFM_PLUGIN_FILE, 'wccfm_settings_link' );
  * @since  1.0.0
  * @return VirtualCheckoutManager\Bootstrap
  */
-if ( ! function_exists( 'wccfm_init' ) ) {
+if(! function_exists('wccfm_init')) {
 	function wccfm_init() {
 		return VirtualCheckoutManager\Bootstrap::instance();
 	}
