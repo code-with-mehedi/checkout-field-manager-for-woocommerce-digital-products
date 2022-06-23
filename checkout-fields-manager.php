@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: Virtual product checkout fields manager.
- * Description: It will give you option to hide / remove checkout fields.
+ * Plugin Name: Virtual product checkout fields manager for WooCommerce.
+ * Description: A simple plugin that will allow you to manage the checkout fields for virtual products.
  * Version:     1.0.0
  * Author:      Mehedi Hasan
  * Author URI:  https://codewithmehedi.com
