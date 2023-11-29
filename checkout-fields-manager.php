@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Virtual product checkout fields manager for WooCommerce.
  * Description: A simple plugin that will allow you to manage the checkout fields for virtual products.
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      Mehedi Hasan
  * Author URI:  https://codewithmehedi.com
  * License:     GPL-2.0+
