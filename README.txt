@@ -3,7 +3,7 @@ Contributors: mehedi_csit, sourovroy
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ANJRBFTXBUE8Q&source=url
 Tags: Woocommerce Checkout, Digital Goods, remove billing fields, checkout fields, Checkout for Digital Goods, checkout fields manager, digital product checkout fields, woocommerce digital product, virtual product, hide checkout fields.
 Requires at least: 5.4
-Tested up to: 6.0
+Tested up to: 6.4.1
 Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPL-2.0+
